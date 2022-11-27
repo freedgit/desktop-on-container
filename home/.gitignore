@@ -1,0 +1,17 @@
+.mozilla
+Downloads
+.cache
+.dbus
+.local
+.ssh
+Downloads
+.config
+.mozilla
+*.log
+*.pid
+*.pem
+passwd
+GNUstep
+.viminfo
+.bash_history
+.Xauthority

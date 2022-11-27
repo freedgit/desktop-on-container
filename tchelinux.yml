@@ -1,0 +1,27 @@
+version: "2.2"
+
+services:
+  ctl:
+    container_name: ctl
+    image: tl:latest
+    volumes:
+      - ${pwd}/home:/home/ffff
+    environment:
+      THE_USERNAME: ffff
+      THE_UID: "22222"
+      THE_GID: "22222"
+      THE_STARTUP_SCRIPT: "/home/ffff/user.sh"
+    ports:
+      - 2200:22/tcp
+      - 5901:5901/tcp
+      - 29100:29100/tcp
+    tmpfs:
+      - /run
+      - /tmp
+    cap_add:
+      - SYS_ADMIN
+      - SYS_PTRACE
+      - NET_ADMIN
+      - IPC_LOCK
+    hostname: ctl01.local
+    # restart: always

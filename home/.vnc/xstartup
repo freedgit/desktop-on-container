@@ -1,0 +1,37 @@
+#!/bin/sh
+
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+# this will start a xterm without PULSE_SERVER, but will probably
+# apply Xdefaults.
+/etc/X11/xinit/xinitrc
+
+export PULSE_SERVER=10.0.1.200
+
+thunar &
+
+gimp &
+
+pavucontrol &
+
+xterm &
+
+dia &
+
+gnome-system-monitor &
+
+libreoffice &
+
+xsetroot -solid darkblue
+
+# mwm is an option!
+wmaker &
+
+# Assume either Gnome will be started by default when installed
+# We want to kill the session automatically in this case when user logs out. In case you modify
+# /etc/X11/xinit/Xclients or ~/.Xclients yourself to achieve a different result, then you should
+# be responsible to modify below code to avoid that your session will be automatically killed
+if [ -e /usr/bin/gnome-session ]; then
+    vncserver -kill $DISPLAY
+fi
